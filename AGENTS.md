@@ -13,18 +13,19 @@ Owner: See catalog-info.yaml
 
 ## Setup
 
-- Install: See README for setup
-- Dev: See README for dev command
+- Nothing to install: the commands run with `npx github:geolonia/datamodels-toolkit#v0.1.0` (Node.js 24 or later).
+- Build: `npx github:geolonia/datamodels-toolkit#v0.1.0 build` (into `_site/`).
 
 ## Test & Lint
 
-- Lint: See README for lint command
-- Test: See README for test command
+- Check: `npx github:geolonia/datamodels-toolkit#v0.1.0 check` (also runs on every pull request).
 
 ## Constraints
 
 - Do not commit secrets.
 - Prefer small PRs with tests.
+- Sign off every commit (`git commit -s`).
+- Published IRIs and versioned files do not change: `node.yaml`'s base URL and IRI form stay as they are, and a changed model gets a new subject version.
 
 ## Issue intake (from Slack / Claude)
 
