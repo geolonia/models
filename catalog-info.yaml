@@ -1,0 +1,21 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  namespace: geolonia
+  name: models
+  title: Geolonia Models
+  description: Data models of Geolonia projects, published at models.geolonia.com
+  annotations:
+    github.com/project-slug: geolonia/models
+  tags: ['website']
+  links:
+    - url: https://models.geolonia.com
+      title: Geolonia Models
+      icon: web
+spec:
+  type: 'website'
+  lifecycle: 'experimental'
+  owner: group:geolonia/data-team
+  # accessGrants:
+  #   - team: group:geolonia/team-name
+  #     permission: write  # read | triage | write | maintain | admin
