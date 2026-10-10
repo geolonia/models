@@ -1,0 +1,13 @@
+# The settings of this data model node (https://github.com/geolonia/datamodels/blob/main/docs/node.md).
+# The base URL and the IRI form are part of every IRI the node publishes: do not change them once published.
+baseUrl: https://models.geolonia.com
+iris: hash
+languages:
+  - ja
+  - en
+publisher:
+  name:
+    ja: Geolonia
+    en: Geolonia
+  url: https://geolonia.com
+license: CC0-1.0

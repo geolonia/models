@@ -1,0 +1,46 @@
+# Checks the node on pull requests; on main, builds it and deploys it to GitHub Pages
+# (Settings → Pages → Source: GitHub Actions). Written by datamodels init.
+name: Publish
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  check:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: geolonia/datamodels-toolkit@73bee7bf36020685b04477c9342fa101d34511bc # v0.1.0
+        with:
+          deploy: 'false'
+
+  publish:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.node.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - id: node
+        uses: geolonia/datamodels-toolkit@73bee7bf36020685b04477c9342fa101d34511bc # v0.1.0
