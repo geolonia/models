@@ -10,6 +10,6 @@ Data models of Geolonia projects: JSON Schemas, JSON-LD @contexts and vocabulari
 Licence: [CC0-1.0](LICENSE).
 
 ```bash
-npx github:geolonia/datamodels-toolkit#v0.2.1 check
-npx github:geolonia/datamodels-toolkit#v0.2.1 build   # into _site/
+npx github:geolonia/datamodels-toolkit#v0.3.1 check
+npx github:geolonia/datamodels-toolkit#v0.3.1 build   # into _site/
 ```
