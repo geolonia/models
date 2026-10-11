@@ -7,6 +7,8 @@ Data models of Geolonia projects: JSON Schemas, JSON-LD @contexts and vocabulari
 - `.github/workflows/publish.yml`: checks pull requests, and publishes main to GitHub Pages.
 - `catalog-info.yaml`: the Backstage entry (owner: Data Team).
 
+Licence: [CC0-1.0](LICENSE).
+
 ```bash
 npx github:geolonia/datamodels-toolkit#v0.2.1 check
 npx github:geolonia/datamodels-toolkit#v0.2.1 build   # into _site/
