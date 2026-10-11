@@ -1,0 +1,16 @@
+{
+  "id": "urn:ngsi-ld:HazardArea:kagawa-kotogawa-max-2",
+  "type": "HazardArea",
+  "hazardType": "flood",
+  "scenario": "maximumAssumed",
+  "depthFrom": 0.5,
+  "depthTo": 3.0,
+  "rankLabel": "0.5m以上3.0m未満",
+  "riverName": "香東川",
+  "publisher": "香川県",
+  "localGovernmentCode": "372013",
+  "location": {
+    "type": "Polygon",
+    "coordinates": [[[134.0310, 34.3260], [134.0350, 34.3260], [134.0350, 34.3290], [134.0310, 34.3290], [134.0310, 34.3260]]]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "@context": {
+    "smartmap": "https://models.geolonia.com/ns/smartmap#",
+    "HazardArea": "smartmap:HazardArea",
+    "hazardType": "smartmap:hazardType",
+    "scenario": "smartmap:scenario",
+    "depthFrom": "smartmap:depthFrom",
+    "depthTo": "smartmap:depthTo",
+    "durationFrom": "smartmap:durationFrom",
+    "durationTo": "smartmap:durationTo",
+    "rankLabel": "smartmap:rankLabel",
+    "riverName": "smartmap:riverName",
+    "publisher": "smartmap:publisher",
+    "dateIssued": "smartmap:dateIssued",
+    "localGovernmentCode": "smartmap:localGovernmentCode"
+  }
+}

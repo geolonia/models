@@ -1,0 +1,44 @@
+title:
+  ja: 想定区域
+  en: Hazard area
+description:
+  ja: 想定される災害の区域です。たとえば、洪水の想定浸水深の 1 つの区分にあたる範囲です。国、都道府県、市町村が公開するハザードマップのデータを表します。浸水深や浸水継続時間は、出典ごとに異なるランクの番号ではなく、区分の下限と上限（メートル、時間）で表します。出典の書き方は rankLabel にそのまま残します。
+  en: "An area of an assumed hazard, such as the area of one band of an assumed flood depth, from the hazard map data that the national government, prefectures and municipalities publish. Depth and duration are given as the band's lower and upper bounds (metres, hours), not as rank numbers that differ between sources; the source's own wording stays in rankLabel."
+status: experimental
+attributes:
+  hazardType:
+    ja: 想定される災害の種類：flood（洪水）、inlandFlood（内水氾濫）、tsunami（津波）、stormSurge（高潮）、houseCollapseFlow（家屋倒壊等氾濫想定区域・氾濫流）、houseCollapseErosion（家屋倒壊等氾濫想定区域・河岸侵食）
+    en: "The kind of assumed hazard: flood, inlandFlood (inland flooding), tsunami, stormSurge, houseCollapseFlow (area where houses may collapse, from flood flow), houseCollapseErosion (area where houses may collapse, from riverbank erosion)"
+  scenario:
+    ja: 洪水の想定の前提となる降雨：plannedScale（計画規模）か maximumAssumed（想定最大規模）
+    en: "For a flood, the rainfall the assumption is based on: plannedScale (計画規模) or maximumAssumed (想定最大規模)"
+  depthFrom:
+    ja: 浸水深の区分の下限（メートル、この値を含む）
+    en: Lower bound of the depth band, in metres (included)
+  depthTo:
+    ja: 浸水深の区分の上限（メートル、この値を含まない）。最も深い区分では省きます。
+    en: Upper bound of the depth band, in metres (not included). Left out for the deepest band
+  durationFrom:
+    ja: 浸水継続時間の区分の下限（時間、この値を含む）
+    en: Lower bound of the band of the flood duration, in hours (included)
+  durationTo:
+    ja: 浸水継続時間の区分の上限（時間、この値を含まない）。最も長い区分では省きます。
+    en: Upper bound of the band of the flood duration, in hours (not included). Left out for the longest band
+  rankLabel:
+    ja: 出典での区分の書き方をそのまま（例：「0.5m以上3.0m未満」「（0.3m未満）」「3」）
+    en: "The band or class as the source writes it, unchanged (for example 0.5m以上3.0m未満, （0.3m未満）, or 3)"
+  riverName:
+    ja: 洪水の想定の対象の河川
+    en: The river the flood assumption is for
+  publisher:
+    ja: 想定を公表した機関（例：国土交通省、香川県）
+    en: The public body that published the assumption (for example the Ministry of Land, Infrastructure, Transport and Tourism, or a prefecture)
+  dateIssued:
+    ja: 想定が公表された日
+    en: When the assumption was published
+  localGovernmentCode:
+    ja: この区域を地図に表示する自治体の全国地方公共団体コード（検査数字を含む 6 桁）
+    en: Local government code (6 digits including the check digit) of the municipality whose map shows the area
+  location:
+    ja: 区域。Polygon か MultiPolygon です。
+    en: The area, as a Polygon or MultiPolygon

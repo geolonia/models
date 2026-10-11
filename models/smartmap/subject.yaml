@@ -1,0 +1,10 @@
+# A subject: models that share one @context and one vocabulary. Write the title and description in each language.
+name: smartmap
+version: 0.1.0
+source: minted
+title:
+  ja: スマートマップ
+  en: Smart Map
+description:
+  ja: Geolonia のスマートマップで使うデータのモデルです。自治体が公開するハザード情報、施設、台帳などを、自治体ごとの書き方の違いをならして表します。役に立ったモデルは、あとで datamodels.jp に提案します。
+  en: Models for the data shown on Geolonia's Smart Map. They describe hazard information, facilities, ledgers and similar data that municipalities publish, evening out how each municipality writes them. Models that prove useful are proposed to datamodels.jp later.
