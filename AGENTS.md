@@ -13,12 +13,12 @@ Owner: See catalog-info.yaml
 
 ## Setup
 
-- Nothing to install: the commands run with `npx github:geolonia/datamodels-toolkit#v0.2.1` (Node.js 24 or later).
-- Build: `npx github:geolonia/datamodels-toolkit#v0.2.1 build` (into `_site/`).
+- Nothing to install: the commands run with `npx github:geolonia/datamodels-toolkit#v0.3.1` (Node.js 24 or later).
+- Build: `npx github:geolonia/datamodels-toolkit#v0.3.1 build` (into `_site/`).
 
 ## Test & Lint
 
-- Check: `npx github:geolonia/datamodels-toolkit#v0.2.1 check` (also runs on every pull request).
+- Check: `npx github:geolonia/datamodels-toolkit#v0.3.1 check` (also runs on every pull request).
 
 ## Constraints
 
