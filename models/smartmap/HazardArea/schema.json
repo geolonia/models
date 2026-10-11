@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://models.geolonia.com/schema/smartmap/HazardArea/v0.1.0.json",
+  "title": "HazardArea",
+  "description": "An area of an assumed hazard, such as one band of an assumed flood depth, from the hazard maps that the national government, prefectures and municipalities publish",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "format": "uri", "description": "Entity id (URN)" },
+    "type": { "type": "string", "const": "HazardArea", "description": "Entity type" },
+    "hazardType": {
+      "type": "string",
+      "enum": ["flood", "inlandFlood", "tsunami", "stormSurge", "houseCollapseFlow", "houseCollapseErosion"],
+      "description": "The kind of assumed hazard",
+      "x-ngsi": { "type": "Property" },
+      "x-iri": "https://models.geolonia.com/ns/smartmap#hazardType"
+    },
+    "scenario": {
+      "type": "string",
+      "enum": ["plannedScale", "maximumAssumed"],
+      "description": "For a flood: the rainfall the assumption is based on, the planned scale or the maximum assumed scale",
+      "x-ngsi": { "type": "Property" },
+      "x-iri": "https://models.geolonia.com/ns/smartmap#scenario"
+    },
+    "depthFrom": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Lower bound of the depth band in metres (included)",
+      "x-ngsi": { "type": "Property" },
+      "x-iri": "https://models.geolonia.com/ns/smartmap#depthFrom"
+    },
+    "depthTo": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "Upper bound of the depth band in metres (not included). Left out for the highest band",
+      "x-ngsi": { "type": "Property" },
+      "x-iri": "https://models.geolonia.com/ns/smartmap#depthTo"
+    },
+    "durationFrom": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Lower bound of the band of the assumed flood duration in hours (included)",
+      "x-ngsi": { "type": "Property" },
+      "x-iri": "https://models.geolonia.com/ns/smartmap#durationFrom"
+    },
+    "durationTo": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "Upper bound of the band of the assumed flood duration in hours (not included). Left out for the highest band",
+      "x-ngsi": { "type": "Property" },
+      "x-iri": "https://models.geolonia.com/ns/smartmap#durationTo"
+    },
+    "rankLabel": {
+      "type": "string",
+      "description": "The band or class as the source writes it, unchanged",
+      "x-ngsi": { "type": "Property" },
+      "x-iri": "https://models.geolonia.com/ns/smartmap#rankLabel"
+    },
+    "riverName": {
+      "type": "string",
+      "description": "The river the flood assumption is for",
+      "x-ngsi": { "type": "Property" },
+      "x-iri": "https://models.geolonia.com/ns/smartmap#riverName"
+    },
+    "publisher": {
+      "type": "string",
+      "description": "The public body that published the assumption",
+      "x-ngsi": { "type": "Property" },
+      "x-iri": "https://models.geolonia.com/ns/smartmap#publisher"
+    },
+    "dateIssued": {
+      "type": "string",
+      "format": "date",
+      "description": "When the assumption was published",
+      "x-ngsi": { "type": "Property" },
+      "x-iri": "https://models.geolonia.com/ns/smartmap#dateIssued"
+    },
+    "localGovernmentCode": {
+      "type": "string",
+      "pattern": "^[0-9]{6}$",
+      "description": "Local government code (6 digits including the check digit) of the municipality whose map shows the area",
+      "x-ngsi": { "type": "Property" },
+      "x-iri": "https://models.geolonia.com/ns/smartmap#localGovernmentCode"
+    },
+    "location": {
+      "$ref": "https://datamodels.jp/schema/common/Geometry/v1.0.0.json",
+      "properties": { "type": { "enum": ["Polygon", "MultiPolygon"] } },
+      "description": "The area, as a polygon or multipolygon",
+      "x-ngsi": { "type": "GeoProperty", "model": "https://datamodels.jp/ns/common/Geometry" },
+      "x-iri": "https://uri.etsi.org/ngsi-ld/location"
+    }
+  },
+  "required": ["id", "type", "hazardType", "location"],
+  "dependentRequired": {
+    "depthTo": ["depthFrom"],
+    "durationTo": ["durationFrom"]
+  }
+}

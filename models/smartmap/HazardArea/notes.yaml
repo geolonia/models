@@ -1,0 +1,9 @@
+notes:
+  - ja: "浸水深と浸水継続時間は、ランクの番号ではなく、区分の下限と上限（メートル、時間）で表します（2026-10-11）。ランクの区切りは出典ごとに違うからです。国土交通省の「浸水想定区域図データ電子化ガイドライン（第 5 版）」、国土数値情報の洪水浸水想定区域（A31b）の浸水深ランクコード（0.5、3、5、10、20 メートル）、自治体から受け取るデータ（0.3 メートルから始まる区分など）は、それぞれ区切りが異なります。どの区分も [下限, 上限) に置き換えられ、元の書き方は rankLabel に残ります。"
+    en: "Depth and flood duration are bands with lower and upper bounds (metres, hours), not rank numbers (2026-10-11), because the rank boundaries differ between sources: MLIT's digitising guideline for assumed flood areas (5th edition), the depth rank codes of the national land numerical information flood data A31b (0.5, 3, 5, 10, 20 metres), and municipal deliveries (bands starting at 0.3 metres, for example). Every band becomes [lower, upper), and the source's wording stays in rankLabel."
+  - ja: Smart Map は想定区域を主にラスタータイルで表示します。このモデルは、区域を 1 つずつエンティティとして扱うとき（ブローカーへの登録、ベクトルデータでの配布、区域ごとの検索）のためのものです。
+    en: Smart Map shows assumed hazard areas mostly as raster tiles. This model is for handling the areas one by one as entities (in a broker, in vector data, or for searching by area).
+  - ja: 入れていないもの：土砂災害警戒区域（警戒区域と特別警戒区域という別の区分を持つので、別のモデルにする）、津波の到達時間（必要になったら足す）。
+    en: "Not included yet: sediment-related disaster warning areas (they have their own classes, warning and special warning area, so a model of their own), and tsunami arrival times (added when needed)."
+  - ja: このノードで試す段階（experimental）です。ほかの自治体のアプリでも役立つとわかったら、datamodels.jp に提案します（geolonia/models#2）。
+    en: Experimental, tried in this node first. When it proves useful for other municipalities' apps too, it is proposed to datamodels.jp (geolonia/models#2).

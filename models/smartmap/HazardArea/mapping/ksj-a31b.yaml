@@ -1,0 +1,56 @@
+standard:
+  name:
+    ja: 国土数値情報 洪水浸水想定区域データ（A31b、国土交通省）
+    en: National Land Numerical Information, assumed flood area data (A31b, MLIT)
+  url: https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-A31b-2024.html
+  note:
+    ja: 国が整備する洪水浸水想定区域の全国データ。計画規模、想定最大規模、浸水継続時間、家屋倒壊等氾濫想定区域が、それぞれ別の地物（ランクの属性を 1 つ持つポリゴン）になっている。コード表は 2026-10-11 に確認。この表は対応を説明するもので、datamodels convert で変換するためのものではない（元データはシェープファイルや GeoJSON のポリゴンで、convert は CSV を読む）。
+    en: The nationwide assumed flood area data. Planned scale, maximum assumed scale, flood duration and areas where houses may collapse are separate feature types, polygons with one rank attribute each. Code lists checked on 2026-10-11. This table explains the correspondence; it is not a conversion for datamodels convert (the source is shapefile or GeoJSON polygons, and convert reads CSV).
+fields:
+  hazardType:
+    to: 地物の種類、A31b_401 危険区域区分コード
+    note:
+      ja: 計画規模・想定最大規模・浸水継続時間の地物は flood。家屋倒壊等氾濫想定区域（A31b_401）は危険区域区分コードで分ける：1（氾濫流）→ houseCollapseFlow、2（河岸浸食）→ houseCollapseErosion、3（どちらも該当）→ 両方のエンティティにする。
+      en: "The planned scale, maximum assumed scale and duration features are flood. Areas where houses may collapse (A31b_401) are told apart by the hazard area class code: 1 (flood flow) → houseCollapseFlow, 2 (riverbank erosion) → houseCollapseErosion, 3 (both) → one entity of each."
+  scenario:
+    to: 地物の種類
+    note:
+      ja: 計画規模（A31b_101）は plannedScale、想定最大規模（A31b_201）は maximumAssumed。
+      en: Planned scale (A31b_101) is plannedScale, maximum assumed scale (A31b_201) maximumAssumed.
+  depthFrom:
+    to: A31b_101 / A31b_201 浸水深ランクコード
+    note:
+      ja: 1→0、2→0.5、3→3.0、4→5.0、5→10.0、6→20.0
+      en: 1→0, 2→0.5, 3→3.0, 4→5.0, 5→10.0, 6→20.0
+  depthTo:
+    to: A31b_101 / A31b_201 浸水深ランクコード
+    note:
+      ja: 1→0.5、2→3.0、3→5.0、4→10.0、5→20.0、6→省く
+      en: 1→0.5, 2→3.0, 3→5.0, 4→10.0, 5→20.0, 6→left out
+  durationFrom:
+    to: A31b_301 浸水継続時間ランクコード
+    note:
+      ja: 1→0、2→12、3→24、4→72、5→168、6→336、7→672（時間）
+      en: 1→0, 2→12, 3→24, 4→72, 5→168, 6→336, 7→672 (hours)
+  durationTo:
+    to: A31b_301 浸水継続時間ランクコード
+    note:
+      ja: 1→12、2→24、3→72、4→168、5→336、6→672、7→省く（時間）
+      en: 1→12, 2→24, 3→72, 4→168, 5→336, 6→672, 7→left out (hours)
+  rankLabel:
+    to: コード表の説明
+    note:
+      ja: コードの説明をそのまま（例：「0.5m以上3.0m未満」）。
+      en: The code's description, unchanged (for example 0.5m以上3.0m未満).
+  location:
+    to: ポリゴン
+  riverName:
+    to: null
+    note:
+      ja: 地物には河川名が無い。河川ごとの一覧（データリスト）から補える。
+      en: The features have no river name; it can come from the per-river data list.
+  publisher:
+    to: null
+    note:
+      ja: 整備主体（国土交通省、都道府県）を書く。
+      en: Give the body that prepared the data (MLIT or the prefecture).
