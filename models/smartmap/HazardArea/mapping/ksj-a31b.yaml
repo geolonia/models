@@ -8,10 +8,10 @@ standard:
     en: The nationwide assumed flood area data. Planned scale, maximum assumed scale, flood duration and areas where houses may collapse are separate feature types, polygons with one rank attribute each. Code lists checked on 2026-10-11.
 fields:
   hazardType:
-    to: 地物の種類
+    to: 地物の種類、A31b_401 危険区域区分コード
     note:
-      ja: 計画規模・想定最大規模・浸水継続時間の地物は flood、家屋倒壊等氾濫（氾濫流）は houseCollapseFlow、（河岸浸食）は houseCollapseErosion。危険区域区分コード 3（どちらも該当）は、両方のエンティティにする。
-      en: The planned scale, maximum assumed scale and duration features are flood; house collapse (flood flow) is houseCollapseFlow, (riverbank erosion) houseCollapseErosion. Hazard area class 3 (both) becomes one entity of each.
+      ja: 計画規模・想定最大規模・浸水継続時間の地物は flood。家屋倒壊等氾濫想定区域（A31b_401）は危険区域区分コードで分ける：1（氾濫流）→ houseCollapseFlow、2（河岸浸食）→ houseCollapseErosion、3（どちらも該当）→ 両方のエンティティにする。
+      en: "The planned scale, maximum assumed scale and duration features are flood. Areas where houses may collapse (A31b_401) are told apart by the hazard area class code: 1 (flood flow) → houseCollapseFlow, 2 (riverbank erosion) → houseCollapseErosion, 3 (both) → one entity of each."
   scenario:
     to: 地物の種類
     note:
