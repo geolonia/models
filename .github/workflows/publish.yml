@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: geolonia/datamodels-toolkit@437909f7ddf1de1aee43a07ca34d54a706dcdb1e # v0.3.7
+      - uses: geolonia/datamodels-toolkit@bea3f9317d19043bac3ddbfd29702c8ac4f0287a # v0.3.8
         with:
           deploy: 'false'
 
@@ -43,4 +43,4 @@ jobs:
         with:
           persist-credentials: false
       - id: node
-        uses: geolonia/datamodels-toolkit@437909f7ddf1de1aee43a07ca34d54a706dcdb1e # v0.3.7
+        uses: geolonia/datamodels-toolkit@bea3f9317d19043bac3ddbfd29702c8ac4f0287a # v0.3.8
