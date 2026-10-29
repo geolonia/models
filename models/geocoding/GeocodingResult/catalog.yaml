@@ -1,0 +1,41 @@
+title:
+  ja: ジオコーディングの結果
+  en: Geocoding result
+description:
+  ja: 1 つの住所をジオコーディングした結果です。住所は datamodels.jp の JapaneseAddress、座標は点で表します。そのうえで、入力のどこまでが一致したか（matchLevel）、座標がどの単位のものか（coordinateLevel）、どのジオコーダーとどの版のデータを使ったかを持ちます。一致の単位はジオコーダーごとに書き方が違うので、共通の値に置き換え、元の書き方は matchLevelLabel に残します。
+  en: "The result of geocoding one address. The address is datamodels.jp's JapaneseAddress and the coordinates are a point. On top of that it records how much of the input matched (matchLevel), which part of the address the coordinates belong to (coordinateLevel), and which geocoder and which version of the data were used. Every geocoder writes its match levels differently, so they are mapped to shared values, and the geocoder's own wording stays in matchLevelLabel."
+status: experimental
+attributes:
+  query:
+    ja: ジオコーダーに渡した住所の文字列（そのまま）
+    en: The address text given to the geocoder, unchanged
+  address:
+    ja: 一致した住所。datamodels.jp の JapaneseAddress です。ジオコーダーが正規化した 1 行の住所は addressText に入れます。
+    en: The matched address, as datamodels.jp's JapaneseAddress. The geocoder's normalised one-line address goes in addressText
+  unmatchedParts:
+    ja: 入力のうち一致しなかった部分（入力の順）。たとえば建物名や階
+    en: Parts of the input that did not match, in input order, such as a building name or a floor
+  matchLevel:
+    ja: "一致した最も細かい単位：prefecture（都道府県）、city（郡・市区町村）、machiaza（大字・町）、machiazaDetail（丁目・小字）、residentialBlock（街区符号）、residentialNumber（住居番号）、parcel（地番）。parcel は住居表示の 2 つの単位（residentialBlock、residentialNumber）の代わりになるもので、それより細かいわけではありません。当てはまる値が無いときは省き、ジオコーダーの値を matchLevelLabel に入れます。"
+    en: "The most detailed part of the address that matched: prefecture, city (county or municipality), machiaza (大字・町), machiazaDetail (丁目・小字), residentialBlock (街区符号, block number), residentialNumber (住居番号, residence number), parcel (地番, lot number). parcel is an alternative to the two residential levels (residentialBlock, residentialNumber), not more detailed than them. Left out when no value fits; the geocoder's own value goes in matchLevelLabel"
+  coordinateLevel:
+    ja: 座標がどの単位のものか。値は matchLevel と同じです。matchLevel より粗いことがあります（住居番号まで一致しても、座標は町の代表点しか無いときなど）。
+    en: "Which part of the address the coordinates belong to, with the same values as matchLevel. It can be less detailed than matchLevel: the address may match down to the residence number while the geocoder only has a point for the town"
+  matchLevelLabel:
+    ja: ジオコーダーが返した一致の単位をそのまま、文字列で。数値で返すジオコーダーでは文字列にします（例：rsdtdsp_rsdt、"3"）。
+    en: 'The match level as the geocoder returns it, unchanged, as text: a geocoder that returns a number gives it as text (for example rsdtdsp_rsdt, or "3")'
+  geocoder:
+    ja: 結果を出したジオコーダーの名前
+    en: Name of the geocoder that made the result
+  geocoderVersion:
+    ja: ジオコーダーの版
+    en: Version of the geocoder
+  datasetVersion:
+    ja: ジオコーダーが使った住所データの版
+    en: Version of the address data the geocoder used
+  dateGeocoded:
+    ja: ジオコーディングした日時
+    en: When the address was geocoded
+  location:
+    ja: ジオコーダーが求めた点（GeoJSON の Point）
+    en: The point the geocoder found, as a GeoJSON Point

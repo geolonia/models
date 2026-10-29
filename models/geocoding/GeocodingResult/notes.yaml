@@ -1,0 +1,15 @@
+notes:
+  - ja: 住所の部分は新しく定義せず、datamodels.jp の JapaneseAddress（デジタル庁 GIF のコアデータモデル「住所」をもとにしたもの）をそのまま使います。このモデルが加えるのは、ジオコーディングの処理についての情報だけです（2026-10-29）。
+    en: "The address part is not defined again: it is datamodels.jp's JapaneseAddress, which is based on the Digital Agency's GIF core data model for addresses. This model only adds what the geocoding did (2026-10-29)."
+  - ja: 一致の単位の値は、デジタル庁の abr-geocoder（v3）の match_level をもとにしています。8 つのうち unknown 以外の 7 つを、読みやすい名前で 1 対 1 に対応させています（対応表は mapping/abr-geocoder.yaml）。ほかのジオコーダーは、それぞれの単位をこの値に対応させます。単位の数や書き方（数字、名前）はジオコーダーごとに違い、アプリがそれを直接読むと、ジオコーダーを替えたときに動かなくなるためです。
+    en: "The match level values are based on match_level of the Digital Agency's abr-geocoder (v3): its seven values other than unknown, one to one, with readable names (table in mapping/abr-geocoder.yaml). Other geocoders map their own levels to these values. The number of levels and how they are written (numbers, names) differ between geocoders, and an application that reads them directly stops working when the geocoder is replaced."
+  - ja: 一致しなかったとき（abr-geocoder の unknown）は matchLevel を省きます。近い値に無理に当てはめないためです。ジオコーダーの値は matchLevelLabel に残ります。
+    en: "When nothing matched (unknown in abr-geocoder), matchLevel is left out rather than forced to the nearest value; the geocoder's value stays in matchLevelLabel."
+  - ja: abr-geocoder の score は入れていません。abr-geocoder 自身が、候補を並べ替えるための参考値で、一致の正しさを表さないと説明しているからです。ほかのジオコーダーのスコアとも比べられません。
+    en: "abr-geocoder's score is not included: abr-geocoder describes it as a value for ordering candidates that does not say whether the match is right, and it cannot be compared with other geocoders' scores."
+  - ja: 入れていないもの：地域メッシュコード（JIS X 0410）や郵便番号の検索結果などの付加情報。ジオコーダーによって持っているものが違うので、必要になったら足すか、extend で拡張します。
+    en: "Not included yet: extra information such as the grid square code (JIS X 0410) or a postal code lookup. Geocoders differ in what they offer, so these are added when needed, or in an extension (extend)."
+  - ja: 検討したもの：GeocodeJSON（Pelias、Photon などが使う GeoJSON の拡張）。国際的な仕様ですが、日本の住所の単位（町字、街区符号、住居番号、地番）を表せず、使っているツールも少ないため、使っていません。
+    en: "Considered: GeocodeJSON (a GeoJSON extension used by Pelias, Photon and others). It is international, but it has no levels for Japanese addresses (machiaza, block number, residence number, lot number) and few tools use it, so it is not used here."
+  - ja: このノードで試す段階（experimental）です。
+    en: Experimental, tried in this node first.

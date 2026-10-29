@@ -1,0 +1,18 @@
+{
+  "@context": [
+    "https://datamodels.jp/context/common/v1.0.0.jsonld",
+    {
+      "geocoding": "https://models.geolonia.com/ns/geocoding#",
+      "GeocodingResult": "geocoding:GeocodingResult",
+      "query": "geocoding:query",
+      "unmatchedParts": { "@id": "geocoding:unmatchedParts", "@container": "@list" },
+      "matchLevel": "geocoding:matchLevel",
+      "coordinateLevel": "geocoding:coordinateLevel",
+      "matchLevelLabel": "geocoding:matchLevelLabel",
+      "geocoder": "geocoding:geocoder",
+      "geocoderVersion": "geocoding:geocoderVersion",
+      "datasetVersion": "geocoding:datasetVersion",
+      "dateGeocoded": "geocoding:dateGeocoded"
+    }
+  ]
+}

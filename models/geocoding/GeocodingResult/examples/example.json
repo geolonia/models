@@ -1,0 +1,34 @@
+{
+  "id": "urn:ngsi-ld:GeocodingResult:kioicho-1-3",
+  "type": "GeocodingResult",
+  "query": "東京都千代田区紀尾井町1番3号 東京ガーデンテラス紀尾井町 19階、20階",
+  "address": {
+    "addressCountry": "JP",
+    "addressRegion": "東京都",
+    "addressLocality": "千代田区",
+    "machiaza": "紀尾井町",
+    "banchi": "1",
+    "go": "3",
+    "residentialIndication": true,
+    "localGovernmentCode": "131016",
+    "abrMachiazaId": "0056000",
+    "addressText": "東京都千代田区紀尾井町1-3"
+  },
+  "unmatchedParts": [
+    "東京ガーデンテラス紀尾井町",
+    "19階、20階"
+  ],
+  "matchLevel": "residentialNumber",
+  "coordinateLevel": "residentialNumber",
+  "matchLevelLabel": "rsdtdsp_rsdt",
+  "geocoder": "abr-geocoder",
+  "geocoderVersion": "3.0.22",
+  "datasetVersion": "3.0.18",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      139.736394597,
+      35.679107172
+    ]
+  }
+}

@@ -11,3 +11,6 @@ publisher:
     en: Geolonia Inc.
   url: https://geolonia.com/
 license: CC0-1.0
+# The nodes this node builds on: their @contexts may be imported (geocoding imports datamodels.jp's common subject).
+nodes:
+  - { url: https://datamodels.jp/, index: https://datamodels.jp/catalog.json }

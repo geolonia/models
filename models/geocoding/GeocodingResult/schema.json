@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://models.geolonia.com/schema/geocoding/GeocodingResult/v0.1.0.json",
+  "title": "GeocodingResult",
+  "description": "The result of geocoding one address: the address as a JapaneseAddress, the point, and what the geocoding did (how much of the input matched, from which level the coordinates come, which geocoder and data)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Entity id (URN)"
+    },
+    "type": {
+      "type": "string",
+      "const": "GeocodingResult",
+      "description": "Entity type"
+    },
+    "query": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The address text given to the geocoder, unchanged",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://models.geolonia.com/ns/geocoding#query"
+    },
+    "address": {
+      "$ref": "https://datamodels.jp/schema/common/JapaneseAddress/v1.0.0.json",
+      "description": "The matched address, as a JapaneseAddress value (datamodels.jp common subject). addressText holds the geocoder's normalised address line",
+      "x-ngsi": {
+        "type": "Property",
+        "model": "https://datamodels.jp/ns/common/JapaneseAddress"
+      },
+      "x-iri": "https://schema.org/address"
+    },
+    "unmatchedParts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Parts of the input the geocoder could not match, in input order (for example a building name and floor)",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://models.geolonia.com/ns/geocoding#unmatchedParts"
+    },
+    "matchLevel": {
+      "type": "string",
+      "enum": [
+        "prefecture",
+        "city",
+        "machiaza",
+        "machiazaDetail",
+        "residentialBlock",
+        "residentialNumber",
+        "parcel"
+      ],
+      "description": "The most detailed level of the address that matched. parcel (a lot number) is an alternative to the two residential levels, not more detailed than them. Left out when no value fits; the geocoder's own value is in matchLevelLabel",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://models.geolonia.com/ns/geocoding#matchLevel"
+    },
+    "coordinateLevel": {
+      "type": "string",
+      "enum": [
+        "prefecture",
+        "city",
+        "machiaza",
+        "machiazaDetail",
+        "residentialBlock",
+        "residentialNumber",
+        "parcel"
+      ],
+      "description": "The level of the address the coordinates belong to. Can be less detailed than matchLevel, for example when the geocoder only has a point for the town",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://models.geolonia.com/ns/geocoding#coordinateLevel"
+    },
+    "matchLevelLabel": {
+      "type": "string",
+      "description": "The match level as the geocoder writes it, unchanged, as text: a geocoder that returns a number gives it as text (for example rsdtdsp_rsdt, or \"3\")",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://models.geolonia.com/ns/geocoding#matchLevelLabel"
+    },
+    "geocoder": {
+      "type": "string",
+      "description": "Name of the geocoder that made the result",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://models.geolonia.com/ns/geocoding#geocoder"
+    },
+    "geocoderVersion": {
+      "type": "string",
+      "description": "Version of the geocoder",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://models.geolonia.com/ns/geocoding#geocoderVersion"
+    },
+    "datasetVersion": {
+      "type": "string",
+      "description": "Version of the address data the geocoder used",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://models.geolonia.com/ns/geocoding#datasetVersion"
+    },
+    "dateGeocoded": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the address was geocoded",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://models.geolonia.com/ns/geocoding#dateGeocoded"
+    },
+    "location": {
+      "$ref": "https://datamodels.jp/schema/common/Geometry/v1.0.0.json",
+      "properties": {
+        "type": {
+          "const": "Point"
+        }
+      },
+      "description": "The point the geocoder found, as a GeoJSON Point",
+      "x-ngsi": {
+        "type": "GeoProperty",
+        "model": "https://datamodels.jp/ns/common/Geometry"
+      },
+      "x-iri": "https://uri.etsi.org/ngsi-ld/location"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "query"
+  ]
+}

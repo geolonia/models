@@ -1,0 +1,10 @@
+# A subject: models that share one @context and one vocabulary. Write the title and description in each language.
+name: geocoding
+version: 0.1.0
+source: minted
+title:
+  ja: ジオコーディング
+  en: Geocoding
+description:
+  ja: ジオコーダー（住所から座標を求めるソフトウェア）の結果を表すモデルです。住所そのものは datamodels.jp の JapaneseAddress で表し、どこまで一致したか、どのデータで求めたかといった処理の情報を加えます。ジオコーダーが違っても、同じ形で結果を扱えるようにします。
+  en: Models for the results of a geocoder (software that finds coordinates for an address). The address itself is datamodels.jp's JapaneseAddress; these models add what the geocoding did, such as how much of the address matched and which data it used, so results from different geocoders have the same shape.

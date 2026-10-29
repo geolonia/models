@@ -1,0 +1,85 @@
+standard:
+  name:
+    ja: デジタル庁 abr-geocoder（v3）の /geocode の結果
+    en: The /geocode result of the Digital Agency's abr-geocoder (v3)
+  url: https://github.com/digital-go-jp/abr-geocoder
+  license:
+    ja: MIT ライセンス（ソフトウェア）
+    en: MIT licence (the software)
+  note:
+    ja: アドレス・ベース・レジストリを使うジオコーダー。結果は GeoJSON の FeatureCollection で、候補ごとに 1 つの Feature。1 つの Feature が 1 つの GeocodingResult になる。id は結果に無いので、呼び出した側が候補ごとに重ならない id を作る（例：urn:ngsi-ld:GeocodingResult:<リクエストの id>-<候補の順番>）。フィールドは abrg/openapi/openapi.yml で 2026-10-29 に確認（リリース 3.0.52 の時点）。例の geocoderVersion と datasetVersion は openapi.yml の例の値で、実際に動かした結果ではない。abr-geocoder が null を返す項目は、エンティティでは省く（null のままでは検証を通らない）。properties.score は入れない（notes.yaml を参照）。この表は対応を説明するもので、datamodels convert で変換するためのものではない（結果は CSV ではなく JSON）。
+    en: "A geocoder that uses the Address Base Registry. The result is a GeoJSON FeatureCollection with one Feature per candidate; each Feature becomes one GeocodingResult. The result has no id, so the caller makes one per candidate that no other result uses (for example urn:ngsi-ld:GeocodingResult:<request id>-<candidate number>). Fields checked in abrg/openapi/openapi.yml on 2026-10-29 (release 3.0.52). The example's geocoderVersion and datasetVersion are the sample values in openapi.yml, not from a real run. A field abr-geocoder returns as null is left out of the entity (null does not pass validation). properties.score is not kept (see notes.yaml). This table explains the correspondence; it is not a conversion for datamodels convert (the result is JSON, not CSV)."
+fields:
+  query:
+    to: query.address
+  location:
+    to: features[].geometry
+    note:
+      ja: null のとき（一致しなかったとき）は省く
+      en: Left out when null (nothing matched)
+  matchLevel:
+    to: properties.match_level
+    note:
+      ja: pref→prefecture、city→city、machiaza→machiaza、machiaza_detail→machiazaDetail、rsdtdsp_blk→residentialBlock、rsdtdsp_rsdt→residentialNumber、parcel→parcel、unknown→省く
+      en: pref→prefecture, city→city, machiaza→machiaza, machiaza_detail→machiazaDetail, rsdtdsp_blk→residentialBlock, rsdtdsp_rsdt→residentialNumber, parcel→parcel, unknown→left out
+  coordinateLevel:
+    to: properties.coordinates_level
+    note:
+      ja: matchLevel と同じ対応。unknown と null は省く。
+      en: Same values as matchLevel; unknown and null are left out
+  matchLevelLabel:
+    to: properties.match_level
+  unmatchedParts:
+    to: properties.unmatched_address
+    note:
+      ja: すべて一致したときは null なので省く
+      en: null when everything matched, then left out
+  geocoder:
+    to: null
+    note: { ja: 結果には無い。常に abr-geocoder, en: not in the result; always abr-geocoder }
+    value: abr-geocoder
+  geocoderVersion:
+    to: result_info.api_version
+  datasetVersion:
+    to: result_info.db_version
+  dateGeocoded:
+    to: null
+    note:
+      ja: 結果には無い。呼び出した側が、ジオコーディングした日時を入れる
+      en: not in the result; the caller sets the time it geocoded
+  address.addressText:
+    to: properties.matched_address
+  address.addressRegion:
+    to: structured_address.pref
+  address.addressLocality:
+    to: structured_address.county、city、ward
+    note:
+      ja: 郡、市町村、政令市の区をつなげる（例：横浜市中区）
+      en: County, municipality and ward of a designated city joined (for example 横浜市中区)
+  address.machiaza:
+    to: structured_address.oaza_cho、koaza
+    note:
+      ja: 大字・町と小字をつなげる。京都の通り名（kyoto_st）は addressText にだけ残る。同一町字識別情報（machiaza_dist）は入れない：町字を区別するのは abrMachiazaId。
+      en: "Oaza/town and koaza joined. Kyoto street names (kyoto_st) stay only in addressText. machiaza_dist (which tells apart towns with the same name) is not kept: abrMachiazaId identifies the town"
+  address.chome:
+    to: structured_address.chome
+    note:
+      ja: abr-geocoder は「一丁目」のような書き方を返すことがある。JapaneseAddress では算用数字だけなので、変換する側が「丁目」を取り、漢数字を算用数字にする（「一丁目」→「1」、「十二丁目」→「12」、「二十丁目」→「20」）。
+      en: "abr-geocoder can return the chome as written, such as 一丁目. JapaneseAddress takes digits only, so the converter drops 丁目 and turns kanji numerals into digits (一丁目 → 1, 十二丁目 → 12, 二十丁目 → 20)"
+  address.banchi:
+    to: structured_address.blk_num、prc_num1〜3
+    note:
+      ja: 住居表示では街区符号（blk_num）。地番では prc_num1〜3 をハイフンでつなげる（例：4638-1）。
+      en: In a residential-indication area the block number (blk_num); for a lot number, prc_num1 to 3 joined with hyphens (for example 4638-1)
+  address.go:
+    to: structured_address.rsdt_num、rsdt_num2
+    note:
+      ja: 住居番号。枝番（rsdt_num2）があればハイフンでつなげる。地番のときは空。
+      en: The residence number, with its branch number (rsdt_num2) joined by a hyphen when there is one. Empty for a lot number
+  address.residentialIndication:
+    to: ids.rsdt_addr_flg
+    note: { ja: 1→true、0→false、null（町字までの一致など）→省く, en: "1→true, 0→false, null (for example a match down to the town only)→left out" }
+  address.localGovernmentCode:
+    to: ids.lg_code
+  address.abrMachiazaId:
+    to: ids.machiaza_id
