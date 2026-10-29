@@ -55,7 +55,7 @@
         "residentialNumber",
         "parcel"
       ],
-      "description": "The most detailed level of the address that matched. Left out when no value fits; the geocoder's own value is in matchLevelLabel",
+      "description": "The most detailed level of the address that matched. parcel (a lot number) is an alternative to the two residential levels, not more detailed than them. Left out when no value fits; the geocoder's own value is in matchLevelLabel",
       "x-ngsi": {
         "type": "Property"
       },

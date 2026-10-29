@@ -5,7 +5,7 @@
       "geocoding": "https://models.geolonia.com/ns/geocoding#",
       "GeocodingResult": "geocoding:GeocodingResult",
       "query": "geocoding:query",
-      "unmatchedParts": "geocoding:unmatchedParts",
+      "unmatchedParts": { "@id": "geocoding:unmatchedParts", "@container": "@list" },
       "matchLevel": "geocoding:matchLevel",
       "coordinateLevel": "geocoding:coordinateLevel",
       "matchLevelLabel": "geocoding:matchLevelLabel",
