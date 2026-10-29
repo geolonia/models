@@ -80,7 +80,7 @@
     },
     "matchLevelLabel": {
       "type": "string",
-      "description": "The match level as the geocoder writes it, unchanged (for example rsdtdsp_rsdt, or a number)",
+      "description": "The match level as the geocoder writes it, unchanged, as text: a geocoder that returns a number gives it as text (for example rsdtdsp_rsdt, or \"3\")",
       "x-ngsi": {
         "type": "Property"
       },

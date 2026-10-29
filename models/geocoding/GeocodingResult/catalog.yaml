@@ -22,8 +22,8 @@ attributes:
     ja: 座標がどの単位のものか。値は matchLevel と同じです。matchLevel より粗いことがあります（住居番号まで一致しても、座標は町の代表点しか無いときなど）。
     en: "Which part of the address the coordinates belong to, with the same values as matchLevel. It can be less detailed than matchLevel: the address may match down to the residence number while the geocoder only has a point for the town"
   matchLevelLabel:
-    ja: ジオコーダーが返した一致の単位をそのまま（例：rsdtdsp_rsdt、数字）
-    en: The match level as the geocoder returns it, unchanged (for example rsdtdsp_rsdt, or a number)
+    ja: ジオコーダーが返した一致の単位をそのまま、文字列で。数値で返すジオコーダーでは文字列にします（例：rsdtdsp_rsdt、"3"）。
+    en: 'The match level as the geocoder returns it, unchanged, as text: a geocoder that returns a number gives it as text (for example rsdtdsp_rsdt, or "3")'
   geocoder:
     ja: 結果を出したジオコーダーの名前
     en: Name of the geocoder that made the result
