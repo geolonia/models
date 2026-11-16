@@ -1,0 +1,63 @@
+title:
+  ja: "依頼できる品目"
+  en: "Catalogue item"
+description:
+  ja: "提供者が依頼を受ける品目の 1 つです。粗大ごみの品目と手数料の一覧の 1 行などにあたります。受けない品目も、どこへ持っていけばよいかと一緒に載せられます。作業時間、量、必要な技能を持たせると、依頼の値をここから計算できます。"
+  en: "One item a provider takes requests for, such as one row of a city's list of bulky waste items and fees. Items it does not take can be listed too, with where to take them instead. With a service time, an amount and skills, the values of a request can be computed from its items."
+status: draft
+tags: [field-service, catalogue, fees]
+attributes:
+  name:
+    ja: "名前（提供者の一覧の書き方で）"
+    en: "Name, as the provider's list writes it"
+  description:
+    ja: "説明"
+    en: "Description"
+  serviceCode:
+    ja: "依頼の種類を表すコード（例：bulky-waste）。Open311 の service_code にあたります。提供者が決めます。"
+    en: "The kind of request, as a code the provider sets (for example bulky-waste); Open311 service_code"
+  jurisdiction:
+    ja: "依頼を受け持つ自治体など。日本の自治体は全国地方公共団体コード（検査数字を含む 6 桁）で書きます。Open311 の jurisdiction_id にあたります。"
+    en: "The body responsible, such as a municipality; a Japanese municipality as its 6-digit local government code (with check digit); Open311 jurisdiction_id"
+  provider:
+    ja: "作業を引き受ける組織（自治体、委託先など）"
+    en: "The organisation that does the work (a municipality, a contractor)"
+  category:
+    ja: "分類（提供者の一覧の区分、または furniture、appliance などの短い語）"
+    en: "Category: the provider's section, or a short word such as furniture or appliance"
+  keywords:
+    ja: "探すための語（別の呼び方など）"
+    en: "Words to find it by, such as other names"
+  accepted:
+    ja: "この種類の依頼として受けるか。受けない品目は alternative でどこへ持っていくかを示します。"
+    en: "Whether it is taken with this kind of request; for an item that is not, alternative says where to take it"
+  alternative:
+    ja: "受けない品目の出し方（家電リサイクル、販売店への引き取り依頼など）"
+    en: "Where to take an item that is not taken (home appliance recycling, the shop that sold it)"
+  fee:
+    ja: "手数料（priceCurrency の通貨で）"
+    en: "Fee, in priceCurrency"
+  priceCurrency:
+    ja: "通貨（ISO 4217、例：JPY）"
+    en: "Currency (ISO 4217, for example JPY)"
+  sizeNote:
+    ja: "大きさの条件。提供者の書き方のまま（例：幅90cm以下）"
+    en: "Size condition, as the provider writes it (for example 幅90cm以下, width 90 cm or less)"
+  serviceDuration:
+    ja: "現場での作業時間。ISO 8601 の期間（例：PT5M）。ルート最適化の service time にあたります。"
+    en: "Time spent at the place, as an ISO 8601 duration (for example PT5M); the service time of route optimisation"
+  load:
+    ja: "車両の積載量を使う量。提供者が決めた次元ごと（例：[容積の単位, 重さ kg]）。ルート最適化の amount にあたります。"
+    en: "What it takes of a vehicle's capacity, per dimension the provider sets (for example [volume units, kg]); the amount of route optimisation"
+  skills:
+    ja: "作業する側に必要なこと（例：two-person、carry-out）。ルート最適化の skills にあたり、車両や班の skills と照らし合わせます。"
+    en: "What the crew needs (for example two-person, carry-out); the skills of route optimisation, matched against a vehicle's or crew's skills"
+  validFrom:
+    ja: "この内容（手数料など）が有効になった日"
+    en: "From when this entry (its fee, for example) applies"
+  validThrough:
+    ja: "この内容が有効な最後の日"
+    en: "The last day this entry applies"
+  source:
+    ja: "データの出典（URL など）"
+    en: "Where the data comes from (a URL, for example)"

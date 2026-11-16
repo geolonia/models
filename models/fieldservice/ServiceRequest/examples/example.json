@@ -1,0 +1,54 @@
+{
+  "id": "urn:ngsi-ld:ServiceRequest:bulky-0001",
+  "type": "ServiceRequest",
+  "serviceCode": "bulky-waste",
+  "jurisdiction": "282049",
+  "provider": "urn:ngsi-ld:Organization:nishinomiya-city",
+  "requestedAt": "2026-11-16T10:12:00+09:00",
+  "requestStatus": "scheduled",
+  "statusLabel": "収集日確定",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      135.3595,
+      34.7465
+    ]
+  },
+  "area": "nishinomiya-south",
+  "lines": [
+    {
+      "item": "urn:ngsi-ld:CatalogItem:282049:sofa-2-seats",
+      "quantity": 1,
+      "name": "ソファー（二人掛け以上）"
+    },
+    {
+      "item": "urn:ngsi-ld:CatalogItem:282049:chair",
+      "quantity": 2,
+      "name": "いす"
+    }
+  ],
+  "serviceDuration": "PT8M",
+  "load": [
+    3
+  ],
+  "skills": [
+    "two-person"
+  ],
+  "priority": 0,
+  "timeWindows": [
+    {
+      "start": "2026-11-19T08:00:00+09:00",
+      "end": "2026-11-19T17:00:00+09:00"
+    },
+    {
+      "start": "2026-11-20T08:00:00+09:00",
+      "end": "2026-11-20T17:00:00+09:00"
+    }
+  ],
+  "preferredDate": "2026-11-19",
+  "flexibility": "preferred",
+  "scheduledDate": "2026-11-19",
+  "fee": 1500,
+  "priceCurrency": "JPY",
+  "source": "https://collection.demo.pointsman.net/"
+}

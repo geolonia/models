@@ -1,0 +1,13 @@
+notes:
+  - ja: "検討した上流（2026-11-16）：Open311 の services（Smart Data Models の dataModel.IssueTracking でも同じ）は依頼の種類の一覧で、品目ごとの手数料や作業の量は持ちません。schema.org の Offer と Product は手数料（price、priceCurrency、validFrom、validThrough）に使えますが、受けない品目と、その出し方は表せません。名前と期間の語は schema.org から借りています。"
+    en: "Upstream considered (2026-11-16): Open311 services (also in Smart Data Models dataModel.IssueTracking) list kinds of request, without fees or work per item. schema.org Offer and Product cover fees (price, priceCurrency, validFrom, validThrough) but not items that are not taken, nor where to take them. The terms for currency and validity are borrowed from schema.org."
+  - ja: "受けない品目（家電リサイクルの対象など）も、accepted を false にして同じ一覧に載せます。住民は受けない品目も名前で探すからで、見つかったときに alternative で出し方を示せます。"
+    en: "Items that are not taken (home appliance recycling items, for example) are in the same list with accepted false, because people search for them by name too; when found, alternative says where to take them."
+  - ja: "serviceDuration、load、skills は ServiceRequest と同じ意味です。品目ごとに持たせると、依頼の値を行から計算できます（作業時間の合計、量の合計、技能の和）。"
+    en: "serviceDuration, load and skills mean what they mean in ServiceRequest; given per item, a request's values can be computed from its lines (sum of service times and amounts, union of skills)."
+  - ja: "手数料は改定されるので、validFrom と validThrough で有効な期間を示します。改定のたびに新しい内容を足すか、同じエンティティを書き換えるかは、使う側が決めます。"
+    en: "Fees change, so validFrom and validThrough give when an entry applies. Whether a revision adds new entries or updates the same entity is up to the user."
+  - ja: "未決の点：名前の翻訳。NGSI-LD には言語ごとの値を持つ LanguageProperty がありますが、datamodels-toolkit はまだ扱えません。今は name を提供者の言葉で 1 つだけ持ちます。収集デモは日本語と英語の名前を LanguageProperty で持っているので、toolkit が対応したら name をそうする予定です。"
+    en: "Open: translated names. NGSI-LD has LanguageProperty for values per language, but datamodels-toolkit does not handle it yet, so name holds one value in the provider's language. The collection demo keeps Japanese and English names as a LanguageProperty; name becomes one when the toolkit supports it."
+  - ja: "このノードで試す段階（draft）です。最初の実装は Pointsman の収集デモで、西宮市と芦屋市の粗大ごみの一覧（約 470 品目）を載せています。"
+    en: "A draft, tried in this node first. The first implementation is the Pointsman collection demo, with the bulky waste lists of Nishinomiya and Ashiya (about 470 items)."

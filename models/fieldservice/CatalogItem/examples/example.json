@@ -1,0 +1,25 @@
+{
+  "id": "urn:ngsi-ld:CatalogItem:282049:sofa-2-seats",
+  "type": "CatalogItem",
+  "name": "ソファー（二人掛け以上）",
+  "serviceCode": "bulky-waste",
+  "jurisdiction": "282049",
+  "provider": "urn:ngsi-ld:Organization:nishinomiya-city",
+  "category": "furniture",
+  "keywords": [
+    "ソファ",
+    "sofa"
+  ],
+  "accepted": true,
+  "fee": 900,
+  "priceCurrency": "JPY",
+  "serviceDuration": "PT8M",
+  "load": [
+    3
+  ],
+  "skills": [
+    "two-person"
+  ],
+  "validFrom": "2026-04-01",
+  "source": "https://www.nishi.or.jp/kurashi/gomi/gominoshushu/harogomi2026.files/sodaigomi6.pdf"
+}

@@ -1,0 +1,10 @@
+# A subject: models that share one @context and one vocabulary. Write the title and description in each language.
+name: fieldservice
+version: 0.1.0
+source: minted
+title:
+  ja: 訪問サービス
+  en: Field service
+description:
+  ja: 決まった場所に出向いて行う仕事の依頼と、その計画に必要なデータのモデルです。粗大ごみの収集、配達、修理、点検のように、誰かが依頼し、作業する人が日と順番を決めて回るものを扱います。依頼の時間の幅、作業時間、量、必要な技能は、ルート最適化（VRP）のソフトウェアがそのまま読める形にします。役に立ったら datamodels.jp に提案します。
+  en: Models for requests for work done at a place, and for the data needed to plan it. They cover work that someone asks for and a crew does on a day and in an order it plans, such as collecting bulky waste, deliveries, repairs and inspections. The time windows, service times, amounts and skills of a request have the shape that route optimisation (VRP) software reads. Models that prove useful are proposed to datamodels.jp.

@@ -1,0 +1,190 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://models.geolonia.com/schema/fieldservice/CatalogItem/v0.1.0.json",
+  "title": "CatalogItem",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Entity id (URN)"
+    },
+    "type": {
+      "type": "string",
+      "const": "CatalogItem",
+      "description": "Entity type"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name, as the provider's list writes it",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://uri.etsi.org/ngsi-ld/name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "http://purl.org/dc/terms/description"
+    },
+    "serviceCode": {
+      "type": "string",
+      "description": "The kind of request, as a code the provider sets (for example bulky-waste); Open311 service_code",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://models.geolonia.com/ns/fieldservice#serviceCode"
+    },
+    "jurisdiction": {
+      "type": "string",
+      "description": "The body responsible, such as a municipality; a Japanese municipality as its 6-digit local government code (with check digit); Open311 jurisdiction_id",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://models.geolonia.com/ns/fieldservice#jurisdiction"
+    },
+    "provider": {
+      "type": "string",
+      "format": "uri",
+      "description": "The organisation that does the work (a municipality, a contractor)",
+      "x-ngsi": {
+        "type": "Relationship",
+        "target": "any"
+      },
+      "x-iri": "https://schema.org/provider"
+    },
+    "category": {
+      "type": "string",
+      "description": "Category: the provider's section, or a short word such as furniture or appliance",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://schema.org/category"
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "Words to find it by, such as other names",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://schema.org/keywords"
+    },
+    "accepted": {
+      "type": "boolean",
+      "description": "Whether it is taken with this kind of request; for an item that is not, alternative says where to take it",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://models.geolonia.com/ns/fieldservice#accepted"
+    },
+    "alternative": {
+      "type": "string",
+      "description": "Where to take an item that is not taken (home appliance recycling, the shop that sold it)",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://models.geolonia.com/ns/fieldservice#alternative"
+    },
+    "fee": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Fee, in priceCurrency",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://models.geolonia.com/ns/fieldservice#fee"
+    },
+    "priceCurrency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "Currency (ISO 4217, for example JPY)",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://schema.org/priceCurrency"
+    },
+    "sizeNote": {
+      "type": "string",
+      "description": "Size condition, as the provider writes it (for example 幅90cm以下, width 90 cm or less)",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://models.geolonia.com/ns/fieldservice#sizeNote"
+    },
+    "serviceDuration": {
+      "type": "string",
+      "pattern": "^P(?!$)(\\d+D)?(T(?=\\d)(\\d+H)?(\\d+M)?(\\d+(\\.\\d+)?S)?)?$",
+      "description": "Time spent at the place, as an ISO 8601 duration (for example PT5M); the service time of route optimisation",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://models.geolonia.com/ns/fieldservice#serviceDuration"
+    },
+    "load": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0
+      },
+      "minItems": 1,
+      "description": "What it takes of a vehicle's capacity, per dimension the provider sets (for example [volume units, kg]); the amount of route optimisation",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://models.geolonia.com/ns/fieldservice#load"
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "What the crew needs (for example two-person, carry-out); the skills of route optimisation, matched against a vehicle's or crew's skills",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://models.geolonia.com/ns/fieldservice#skills"
+    },
+    "validFrom": {
+      "type": "string",
+      "format": "date",
+      "description": "From when this entry (its fee, for example) applies",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://schema.org/validFrom"
+    },
+    "validThrough": {
+      "type": "string",
+      "format": "date",
+      "description": "The last day this entry applies",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://schema.org/validThrough"
+    },
+    "source": {
+      "type": "string",
+      "description": "Where the data comes from (a URL, for example)",
+      "x-ngsi": {
+        "type": "Property"
+      },
+      "x-iri": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/source"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "name",
+    "serviceCode",
+    "accepted"
+  ],
+  "description": "One item a provider takes requests for, such as one row of a city's list of bulky waste items and fees. Items it does not take can be listed too, with where to take them instead. With a service time, an amount and skills, the values of a request can be computed from its items."
+}

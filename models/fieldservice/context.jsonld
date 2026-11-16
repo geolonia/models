@@ -1,0 +1,44 @@
+{
+  "@context": {
+    "fieldservice": "https://models.geolonia.com/ns/fieldservice#",
+    "ServiceRequest": "fieldservice:ServiceRequest",
+    "CatalogItem": "fieldservice:CatalogItem",
+    "serviceCode": "fieldservice:serviceCode",
+    "jurisdiction": "fieldservice:jurisdiction",
+    "provider": {
+      "@id": "https://schema.org/provider",
+      "@type": "@id"
+    },
+    "requestedAt": "fieldservice:requestedAt",
+    "requestStatus": "fieldservice:requestStatus",
+    "statusLabel": "https://datamodels.jp/ns/task/statusLabel",
+    "location": "https://uri.etsi.org/ngsi-ld/location",
+    "area": "fieldservice:area",
+    "lines": "fieldservice:lines",
+    "serviceDuration": "fieldservice:serviceDuration",
+    "load": "fieldservice:load",
+    "skills": "fieldservice:skills",
+    "priority": "https://datamodels.jp/ns/task/priority",
+    "timeWindows": "fieldservice:timeWindows",
+    "preferredDate": "fieldservice:preferredDate",
+    "flexibility": "fieldservice:flexibility",
+    "scheduledDate": "fieldservice:scheduledDate",
+    "scheduledWindow": "fieldservice:scheduledWindow",
+    "fee": "fieldservice:fee",
+    "priceCurrency": "https://schema.org/priceCurrency",
+    "requester": {
+      "@id": "fieldservice:requester",
+      "@type": "@id"
+    },
+    "description": "http://purl.org/dc/terms/description",
+    "source": "https://smart-data-models.github.io/data-models/terms.jsonld#/definitions/source",
+    "name": "https://uri.etsi.org/ngsi-ld/name",
+    "category": "https://schema.org/category",
+    "keywords": "https://schema.org/keywords",
+    "accepted": "fieldservice:accepted",
+    "alternative": "fieldservice:alternative",
+    "sizeNote": "fieldservice:sizeNote",
+    "validFrom": "https://schema.org/validFrom",
+    "validThrough": "https://schema.org/validThrough"
+  }
+}
