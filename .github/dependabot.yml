@@ -28,3 +28,20 @@ updates:
         update-types:
           - minor
           - patch
+
+  # The toolkit CLI in package.json (npm run check / build). The Action in
+  # publish.yml pins its own copy, bumped by the github-actions entry above;
+  # merge the two bumps together so local and CI checks run the same version.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 8
+    groups:
+      npm:
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch

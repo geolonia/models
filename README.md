@@ -7,11 +7,13 @@ Data models of Geolonia projects: JSON Schemas, JSON-LD @contexts and vocabulari
   - `smartmap/`: the models of Geolonia's Smart Map (geolonia/models#2).
   - `geocoding/`: the results of a geocoder, such as abr-geocoder (geolonia/models#21). The address itself is datamodels.jp's JapaneseAddress.
 - `.github/workflows/publish.yml`: checks pull requests, and publishes main to GitHub Pages.
+- `package.json`: pins the toolkit CLI for running the commands below locally. Dependabot bumps it, and the Action in `publish.yml`.
 - `catalog-info.yaml`: the Backstage entry (owner: Data Team).
 
 Licence: [CC0-1.0](LICENSE).
 
 ```bash
-npx @geolonia/datamodels@0.4.1 check
-npx @geolonia/datamodels@0.4.1 build   # into _site/
+npm ci           # the toolkit CLI, pinned in package.json
+npm run check
+npm run build    # into _site/
 ```

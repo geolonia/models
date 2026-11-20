@@ -13,12 +13,13 @@ Owner: See catalog-info.yaml
 
 ## Setup
 
-- Nothing to install: the commands run with `npx @geolonia/datamodels@0.4.1` (Node.js 24 or later).
-- Build: `npx @geolonia/datamodels@0.4.1 build` (into `_site/`).
+- Install: `npm ci` (Node.js 24 or later). It installs the toolkit CLI at the version pinned in `package.json`.
+- Build: `npm run build` (into `_site/`).
 
 ## Test & Lint
 
-- Check: `npx @geolonia/datamodels@0.4.1 check` (also runs on every pull request).
+- Check: `npm run check` (also runs on every pull request, through the Action pinned in `.github/workflows/publish.yml`).
+- Dependabot bumps the toolkit twice: in `package.json` (npm) and in `publish.yml` (github-actions). Keep the two at the same version.
 
 ## Constraints
 
