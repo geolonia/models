@@ -1,0 +1,16 @@
+{
+  "name": "geolonia-models",
+  "private": true,
+  "description": "Data models of Geolonia projects, published at https://models.geolonia.com",
+  "license": "CC0-1.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "check": "datamodels check",
+    "build": "datamodels build"
+  },
+  "devDependencies": {
+    "@geolonia/datamodels": "0.4.1"
+  }
+}
