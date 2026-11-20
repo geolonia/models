@@ -3,7 +3,6 @@
   "private": true,
   "description": "Data models of Geolonia projects, published at https://models.geolonia.com",
   "license": "CC0-1.0",
-  "type": "module",
   "engines": {
     "node": ">=24"
   },
